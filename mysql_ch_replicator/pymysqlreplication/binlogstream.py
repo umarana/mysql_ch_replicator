@@ -397,7 +397,7 @@ class BinLogStreamReader(object):
                 # valid, if not, get the current position from master
                 if self.log_file is None or self.log_pos is None:
                     cur = self._stream_connection.cursor()
-                    cur.execute("SHOW MASTER STATUS")
+                    cur.execute("SHOW BINARY LOG STATUS")
                     master_status = cur.fetchone()
                     if master_status is None:
                         raise BinLogNotEnabled()
